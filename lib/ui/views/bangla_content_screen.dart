@@ -10,21 +10,67 @@ class BanglaContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('আপ কি আমানত'),
-      ),
-      body: ListView.builder(
-          itemCount: banglaContents.length,
-          itemBuilder: (context,index)=>Card(
-            child: ListTile(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context)=>BanglaContentDetailsScreen(banglaContents[index])
-                ));
+      backgroundColor: Colors.green,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Image.asset('img/bangla.png',
+              width: double.infinity,
+              fit: BoxFit.fill,
+              height: 250,),
+            DraggableScrollableSheet(
+              initialChildSize: 0.7,
+              minChildSize: 0.7,
+              maxChildSize: 0.8,
+              builder: (context,controller){
+                return Container(
+                  child: ListView.builder(
+                      itemCount: banglaContents.length,
+                      itemBuilder: (context,index)=>Card(
+                        child: ListTile(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context)=>BanglaContentDetailsScreen(banglaContents[index])
+                            ));
+                          },
+                          title: Text('${banglaContents[index].title}'),
+                        ),
+                      )),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)
+                      )
+                  ),
+                );
               },
-              title: Text('${banglaContents[index].title}'),
             ),
-          )),
+            Positioned(
+              top: 5,
+              left: -15,
+              child: FlatButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+                child: Icon(Icons.keyboard_backspace,color: Colors.green,),
+                highlightColor: Colors.green.withOpacity(.5),
+              ),
+            ),
+            Positioned(
+              top: 5,
+              right: -15,
+              child: FlatButton(
+                onPressed: (){
+
+                },
+                child: Icon(Icons.share,color: Colors.green,),
+                highlightColor: Colors.green.withOpacity(.5),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

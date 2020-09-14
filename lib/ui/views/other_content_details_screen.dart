@@ -14,7 +14,13 @@ class OtherContentDetailsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Text('${otherLanguage.description}')
+          Container(
+              padding: EdgeInsets.only(top: 10,left: 2,right: 2),
+              color: Colors.white,
+              child: Text('${otherLanguage.description}',style: TextStyle(
+                fontSize: 18,
+                letterSpacing: 0.6,
+              ),)),
         ],
       ),
     );

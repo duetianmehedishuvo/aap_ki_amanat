@@ -1,4 +1,5 @@
 import 'package:aap_ki_amanat/models/bangla.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BanglaContentDetailsScreen extends StatelessWidget {
@@ -13,8 +14,19 @@ class BanglaContentDetailsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Text('${bangla.description}'),
-          Text(bangla.reference??"")
+          Container(
+              padding: EdgeInsets.only(top: 10,left: 2,right: 2),
+              color: Colors.white,
+              child: Text('${bangla.description}',style: TextStyle(
+                fontSize: 18,
+                letterSpacing: 0.6,
+              ),)),
+          Container(
+              padding: EdgeInsets.all(10),
+              color: Colors.white,
+              child: Text(bangla.reference??"",style: TextStyle(
+                color: Colors.black38,
+              ),))
         ],
       ),
     );

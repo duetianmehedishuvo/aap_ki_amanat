@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text('English Content'),
             onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context)=>OtherContentScreen(englishContents, 'English Content')
+                builder: (context)=>OtherContentScreen(englishContents, 'English')
               ));
             },
           ),
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text('Hindi Content'),
             onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context)=>OtherContentScreen(hindiContents, 'Hindi Content')
+                builder: (context)=>OtherContentScreen(hindiContents, 'Hindi')
               ));
             },
           ),
