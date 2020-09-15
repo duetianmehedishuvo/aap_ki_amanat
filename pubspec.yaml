@@ -29,10 +29,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   sqflite: ^1.3.1+1
-  font_awesome_flutter: ^8.8.1
-  smooth_star_rating: ^1.1.1
-  intl: ^0.16.0
-  draggable_scrollable_lock_at_top_sheet: ^1.0.2
+  url_launcher: ^5.5.3
+  deivao_drawer: ^1.0.0+6
+  share: ^0.6.5
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +55,10 @@ flutter:
     - img/bangla.png
     - img/hindi.png
     - img/urdu.png
+    - img/email.png
+    - img/whatsapp.png
+    - img/fb.png
+    - img/islam.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -69,21 +72,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: WorkSans
-      fonts:
-        - asset: fonts/WorkSans-Regular.ttf
-        - asset: fonts/WorkSans-Medium.ttf
-          weight: 500
-        - asset: fonts/WorkSans-SemiBold.ttf
-          weight: 600
-        - asset: fonts/WorkSans-Bold.ttf
-          weight: 700
-    - family: Roboto
-      fonts:
-        - asset: fonts/Roboto-Bold.ttf
-        - asset: fonts/Roboto-Regular.ttf
-        - asset: fonts/Roboto-Medium.ttf
-          weight: 400
     - family: kalpurus
       fonts:
         - asset: fonts/Kalpurush.ttf

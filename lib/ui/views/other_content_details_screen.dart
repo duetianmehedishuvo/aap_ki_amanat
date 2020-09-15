@@ -19,7 +19,9 @@ class OtherContentDetailsScreen extends StatelessWidget {
               color: Colors.white,
               child: Text('${otherLanguage.description}',style: TextStyle(
                 fontSize: 18,
-                letterSpacing: 0.6,
+                letterSpacing: 0.8,
+                fontFamily: '',
+                fontWeight: FontWeight.normal
               ),)),
         ],
       ),
