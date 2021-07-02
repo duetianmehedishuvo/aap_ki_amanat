@@ -1,11 +1,5 @@
-# aap_ki_amanat
+# AAP KI AMANAT
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+In the book Inviting Non-Muslim towards Islam, Author Has Confessed His mistake of Not fulfilling His responsibility of Informing the Human kind about their creator and Judgement Day. A wonderful booklet for Non-Muslims for Inviting and Informing them about Islam and Their Creator.
 
 
