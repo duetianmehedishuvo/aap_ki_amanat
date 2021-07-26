@@ -1,91 +1,141 @@
-import 'package:aap_ki_amanat/models/bangla.dart';
-import 'package:aap_ki_amanat/ui/views/aboutWritter_screen.dart';
-import 'package:aap_ki_amanat/ui/views/bangla_content_details_screens.dart';
-import 'package:aap_ki_amanat/utils/utils.dart';
+
+import 'package:aap_ki_amanat_aap_ki_sei/models/bangla.dart';
+import 'package:aap_ki_amanat_aap_ki_sei/ui/views/bangla_content_details_screens.dart';
+import 'package:aap_ki_amanat_aap_ki_sei/utils/colorResources.dart';
+import 'package:aap_ki_amanat_aap_ki_sei/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class BanglaContentScreen extends StatelessWidget {
-
   final List<Bangla> banglaContents;
+
   BanglaContentScreen(this.banglaContents);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: ColorResources.BACKGROUND,
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Stack(
-              children: [
-                Image.asset('img/bangla.png',
-                  width: double.infinity,
-                  fit: BoxFit.fill,
-                  height: 250,),
-                 Container(
-                  width: double.infinity,
-                  height: 250,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context)=>AboutWritterScreen(banglaWritterInfo)
-                      ));
-                    },
-                    child: Text(''),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: ColorResources.COLOR_LANGUAGE,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
                   ),
-                ),
-
-              ],
-            ),
-            DraggableScrollableSheet(
-              initialChildSize: 0.7,
-              minChildSize: 0.7,
-              maxChildSize: 0.8,
-              builder: (context,controller){
-                return Container(
-                  child: ListView.builder(
-                      itemCount: banglaContents.length,
-                      itemBuilder: (context,index)=>Card(
-                        child: ListTile(
-                          onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context)=>BanglaContentDetailsScreen(banglaContents[index])
-                            ));
-                          },
-                          title: Text('${banglaContents[index].title}'),
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'আপ কি আমানাত',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: ColorResources.COLOR_LANGUAGE,
+                          ),
                         ),
-                      )),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)
-                      )
+                        Text(
+                          'মোট কন্টেন্ট : ${banglaContents.length} টি',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: ColorResources.COLOR_LANGUAGE,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        )
+                      ],
+                    ),
                   ),
-                );
-              },
-            ),
-            Positioned(
-              top: 5,
-              left: -15,
-              child: FlatButton(
-                onPressed: (){
-                  Navigator.of(context).pop();
-                },
-                child: Icon(Icons.keyboard_backspace,color: Colors.green,),
-                highlightColor: Colors.green.withOpacity(.5),
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.share,
+                        color: ColorResources.COLOR_LANGUAGE,
+                      ),
+                      onPressed: () {
+                        Share.share(Strings.SHARE_TEXT, subject: Strings.app_name);
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              top: 5,
-              right: -15,
-              child: FlatButton(
-                onPressed: (){
-                  Share.share('This is a wonderful Apps describing the major concepts and fundamentals of Islam, ideal for non muslims seeking for an introduction to Islam and to understand what are the core differences in beliefs! Download This Application here https://play.google.com/store/apps/developer?id=DUETianmehedishuvo', subject: 'Aap Ki Amanat');
-                },
-                child: Icon(Icons.share,color: Colors.green,),
-                highlightColor: Colors.green.withOpacity(.5),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                padding: EdgeInsets.only(top: 5),
+                color: ColorResources.BACKGROUND,
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                    itemCount: banglaContents.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) => BanglaContentDetailsScreen(banglaContents[index])));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(5),
+                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.all(5),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 45,
+                                  height: 45,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(24),
+                                      gradient: LinearGradient(begin: Alignment.topCenter,
+                                          colors: [
+                                        banglaContents[index].id % 2 == 0
+                                            ? ColorResources.COLOR_LANGUAGE.withOpacity(.9)
+                                            : ColorResources.COLOR_LANGUAGE,
+                                        banglaContents[index].id % 2 == 0
+                                            ? ColorResources.COLOR_LANGUAGE
+                                            : ColorResources.COLOR_LANGUAGE.withOpacity(.9),
+                                        banglaContents[index].id % 2 == 0
+                                            ? ColorResources.COLOR_LANGUAGE.withOpacity(.9)
+                                            : ColorResources.COLOR_LANGUAGE,
+                                      ],
+
+                                      )),
+                                  child: Text(
+                                    banglaContents[index].id.toString(),
+                                    style: TextStyle(fontFamily: '', color: Colors.white, fontSize: 16),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                    child: Text(
+                                  banglaContents[index].title,
+                                  style: TextStyle(
+                                    color: ColorResources.COLOR_LANGUAGE,
+                                  ),
+                                )),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset('img/books.png')
+                              ],
+                            ),
+                          ),
+                        )),
               ),
             ),
           ],
