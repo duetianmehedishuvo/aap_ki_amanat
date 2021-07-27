@@ -29,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final drawerController = DeivaoDrawerController();
 
   _launchPlayStore() async {
-    const url = 'https://play.google.com/store/apps/developer?id=DUETianmehedishuvo';
+    //const url = 'https://play.google.com/store/apps/developer?id=duetianmehedishuvo';
+    const url = 'https://play.google.com/store/apps/dev?id=5439194968291709425';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
